@@ -56,7 +56,7 @@ namespace UsersTasks.Controllers
 
 
 
-        // GET api/users/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Objective>> Get(int id)
         {
@@ -66,7 +66,7 @@ namespace UsersTasks.Controllers
             return new ObjectResult(objective);
         }
        
-        // POST api/users
+        
         [HttpPost]
         public async Task<ActionResult<Objective>> Post(ObjectiveDTO objectiveData)
         {
@@ -91,7 +91,7 @@ namespace UsersTasks.Controllers
             return Ok(objectiveData);
         }
 
-        // PUT api/users/
+       
         [HttpPut]
         public async Task<ActionResult<Objective>> Put(int Id, ObjectiveEditDTO updateObjective)
         {
@@ -109,7 +109,7 @@ namespace UsersTasks.Controllers
 
         }
 
-        // DELETE api/users/5
+        //Назначить задачу исполнителю(введем id задачи, затем в запрос вставляем id пользователя)
         [HttpDelete("{id}")]
         public async Task<ActionResult<Objective>> Delete(int id)
         {

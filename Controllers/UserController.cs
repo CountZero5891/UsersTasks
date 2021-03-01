@@ -36,7 +36,6 @@ namespace UsersTasks.Controllers
         }
 
 
-        // GET api/users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> Get(int id)
         {
@@ -47,7 +46,6 @@ namespace UsersTasks.Controllers
         }
 
 
-        // POST api/users
         [HttpPost]
         public async Task<ActionResult<User>> Post(UserDTO userData)
         {
@@ -69,7 +67,7 @@ namespace UsersTasks.Controllers
             return Ok(userData);
         }
 
-        // PUT api/users/
+  
         [HttpPut]
         public async Task<ActionResult<User>> Put(int Id, UserDTO user)
         {
@@ -85,7 +83,6 @@ namespace UsersTasks.Controllers
         }
         
 
-     // DELETE api/users/5
      [HttpDelete("{id}")]
         public async Task<ActionResult<User>> Delete(int id)
         {
