@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  userstasks:
+    container_name: 'userstasks'
+    image: ${DOCKER_REGISTRY-}userstasks
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - "some-postgres"
+    networks:
+      - userstasks-network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - CUSTOMCONNSTR_Host=Server=some-postgres;Port=5432;Database=postgres;Username=postgres;Password=mysecretpassword;
+    ports:
+      - "8000:80"
+  some-postgres:
+    container_name: 'some-postgres'
+    image: postgres
+    networks:
+      - userstasks-network
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - userstasks-db-data:/var/lib/postgresql/data
+
+      
+networks:
+  userstasks-network:
+    driver: bridge
+volumes:
+    userstasks-db-data:
